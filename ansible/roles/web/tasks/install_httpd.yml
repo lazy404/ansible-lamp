@@ -11,3 +11,12 @@
 
 - name: apache service state
   service: name=apache2 state=started enabled=yes
+
+- name: Create apache2 vhosts
+  template:
+    src: vhost.conf.j2
+    dest: /etc/apache2/sites-available/{{ item.servername }}.conf
+    owner: root
+    group: root
+    mode: 0640
+  with_items: apache_vhosts

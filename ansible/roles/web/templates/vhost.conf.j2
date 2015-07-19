@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+  ServerName {{ item.servername }}
+  DocumentRoot {{ item.documentroot }}
+{% if item.serveradmin is defined %}
+  ServerAdmin {{ item.serveradmin }}
+{% endif %}
+  <Directory "{{ item.documentroot }}">
+    AllowOverride All
+    Options -Indexes FollowSymLinks
+    Order allow,deny
+    Allow from all
+  </Directory>
+</VirtualHost>
+

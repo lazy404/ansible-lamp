@@ -1,4 +1,7 @@
 ---
+apache_vhosts:
+    - {servername: "www.domain.tld", documentroot: "/www/domain"}
+    - {servername: "www.otherdomain.tld", documentroot: "/www/otherdomain", serveradmin: "webmaster@otherdomain.tld"}
 server:
     install: '1'
     timezone: UTC
