@@ -1,0 +1,28 @@
+---
+server:
+    install: '1'
+    timezone: UTC
+    locale: en_US.UTF-8
+vagrant_local:
+    install: '1'
+    vm: { base_box: trusty64, hostname: default, ip: 192.168.33.99, memory: '700', sharedfolder: ./, useVagrantCloud: '1', syncType: nfs }
+apache:
+    install: '1'
+    docroot: /vagrant
+    servername: myApp.vb
+mariadb:
+    install: '1'
+    root_password: '123'
+    database: db
+    user: user
+    password: password
+    dump: ''
+php:
+    install: '1'
+    ppa: php5-5.6
+    packages: [php5-cli, php5-intl, php5-mcrypt, php5-fpm, php5-mysql]
+blackfire:
+    install: '1'
+    server_id: 64fffbad-c899-43e0-8668-9225510c5616
+    server_token: e43e770be9acbe29bd1496862836a2615f6834d940dc61642720ea453676bd48
+
