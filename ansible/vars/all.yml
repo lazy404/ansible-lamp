@@ -1,6 +1,7 @@
 ---
 apache_vhosts:
-    - {servername: "www.domain.tld", documentroot: "/www/domain"}
+    - {disabled: false, servername: "www.domain.tld", documentroot: "/www/domain"}
+    - {disabled: true, servername: "www.domain2.tld", documentroot: "/www/domain2"}
     - {servername: "www.otherdomain.tld", documentroot: "/www/otherdomain", serveradmin: "webmaster@otherdomain.tld"}
 server:
     install: '1'
