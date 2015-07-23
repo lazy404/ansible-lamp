@@ -10,9 +10,6 @@
   apache2_module: state=present name=proxy_fcgi
   notify: restart apache2
 
-- name: apache service state
-  service: name=apache2 state=started enabled=yes
-
 - name: Create apache2 vhosts
   template:
     src: vhost.conf.j2
@@ -39,3 +36,7 @@
   with_items: apache_vhosts
   notify: restart apache2
   when: "item.disabled|default(false) == True"
+
+- name: apache service state
+  service: name=apache2 state=started enabled=yes
+

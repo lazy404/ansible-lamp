@@ -1,6 +1,6 @@
 ---
 apache_vhosts:
-    - {disabled: false, servername: "www.domain.tld", documentroot: "/www/domain"}
+    - {disabled: false, servername: "www.domain.tld", documentroot: "/vagrant", php_pool: "foo"}
     - {disabled: true, servername: "www.domain2.tld", documentroot: "/www/domain2"}
     - {servername: "www.otherdomain.tld", documentroot: "/www/otherdomain", serveradmin: "webmaster@otherdomain.tld"}
 php:

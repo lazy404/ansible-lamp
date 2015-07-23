@@ -5,5 +5,24 @@
   ServerAdmin {{ item.serveradmin }}
 {% endif %}
 
+
+<Directory {{ item.documentroot }}>
+    Options FollowSymLinks
+    AllowOverride AuthConfig FileInfo Indexes Limit Options=Indexes,MultiViews
+    Require all granted
+
+{% if item.php_pool is defined %}
+    <FilesMatch "\.php$">
+        # Note: The only part that varies is /path/to/app.sock
+        SetHandler  "proxy:unix:/run/{{ item.php_pool }}.sock|fcgi://{{ item.servername }}/"
+    </FilesMatch>
+{% endif %}
+</Directory>
+
+#{% if item.php_pool is defined %}
+#    <Proxy "fcgi://{{ item.servername }}/" enablereuse=on max=100>
+#    </Proxy>
+#{% endif %}
+
 </VirtualHost>
 
