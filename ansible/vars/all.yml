@@ -6,6 +6,10 @@ apache_vhosts:
 php:
     packages: [php5-cli, php5-intl, php5-mcrypt, php5-fpm, php5-mysql]
 
+users:
+    - { name: test, group: 100, home: "/tmp/test", password: 'dupa', uid: 100, enable: true, }
+    - { name: test2, group: 101, home: "/tmp/test", password: 'dupa', }
+
 
 server:
     install: '1'

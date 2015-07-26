@@ -2,3 +2,11 @@
 env:
  RUNLEVEL: 1
 
+php_extra_packages: [php5-mysql]
+
+php_fpm_pools:
+ - name: foo
+   user: www-data
+   group: www-data
+   listen: /run/foo.sock
+   chdir: /

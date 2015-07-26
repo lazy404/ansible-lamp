@@ -25,6 +25,19 @@
      - restart php-fpm
   tags: [packages,php,fpm]
 
+- name: Install extra php packages (APT)
+  apt: >
+    name={{ item }}
+    state=present
+    update_cache=yes
+    cache_valid_time={{ apt_cache_valid_time }}
+  with_items: php_extra_packages
+  environment: env
+  when: ansible_os_family == "Debian"
+  notify:
+     - restart php-fpm
+  tags: [packages,php]
+
 - name: Copy the PHP configuration file
   ini_file: >
     dest={{ php_fpm_ini_path }}

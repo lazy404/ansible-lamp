@@ -1,0 +1,14 @@
+---
+- name: Create users
+  user: >
+    name={{ item.name }}
+    state=present
+    createhome=yes
+    force=yes
+    group={{ item.group }}
+    home={{ item.home }}
+    non_unique=yes
+    password={{ item.password }}
+    uid={{ item.uid|default (false) }}
+    shell='/bin/false'
+  with_items: users

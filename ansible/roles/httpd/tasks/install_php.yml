@@ -1,8 +1,0 @@
----
-# These tasks install http and the php modules.
-
-- name: Install PHP Packages
-  sudo: yes
-  apt: pkg={{ item }} state=present
-  with_items: php.packages
-  when: php.packages is defined

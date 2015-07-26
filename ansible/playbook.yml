@@ -6,4 +6,6 @@
   roles:
     - httpd
     - php
+    - users
+    
 
