@@ -1,6 +1,9 @@
 ---
 # These tasks install http and the php modules.
 
+- name: update cache
+  apt: update_cache=yes
+
 - name: Install apache 2.4
   apt: name={{ item }} state=present
   with_items:
@@ -29,6 +32,12 @@
   notify: restart apache2
   when: "item.disabled|default(false) != True"
 
+- name: Disable default vhost
+  file:
+    path: /etc/apache2/sites-enabled/000-default.conf
+    state: absent
+  notify: restart apache2
+
 - name: Disable apache2 vhosts
   file:
     path: /etc/apache2/sites-enabled/{{ item.servername }}.conf
@@ -36,6 +45,7 @@
   with_items: apache_vhosts
   notify: restart apache2
   when: "item.disabled|default(false) == True"
+
 
 - name: apache service state
   service: name=apache2 state=started enabled=yes

@@ -8,7 +8,7 @@ php:
 
 users:
     - { name: test, group: 100, home: "/tmp/test", password: 'dupa', uid: 100, enable: true, }
-    - { name: test2, group: 101, home: "/tmp/test", password: 'dupa', }
+    - { name: test2, group: 101, home: "/tmp/test", password: 'dupa', uid: 101 }
 
 
 server:
